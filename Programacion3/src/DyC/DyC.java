@@ -29,24 +29,25 @@ public class DyC {
             torresHanoi(n-1, b, a, c);
         }
     }
-    public static boolean busquedaBinaria(VectorTDA<Integer> v, int x, int inicio, int fin)
+    public static boolean busquedaBinaria(VectorTDA<Integer> v, int x, int left, int right)
     {
-        if(fin-inicio==0){return false;}
-        if (fin - inicio == 1)
-        {return v.recuperarElemento(0) == x;}
+        if(v.capacidadVector()==0){return false;}
+        if (left >= right)
+        {return v.recuperarElemento(left) == x;}
         else
         {
-            int medio = (fin-inicio)/2;
+            int medio = (left+right)/2;
+
             if (x == v.recuperarElemento(medio))
             {return true;}
             else
             // [1,2,3,4,6]   x = 1
             {
-                if(x<v.recuperarElemento(medio))
-                {return busquedaBinaria(v, x, inicio, medio);}
+                if(x < v.recuperarElemento(medio))
+                {return busquedaBinaria(v, x, left, medio);}
 
                 else
-                {return busquedaBinaria(v, x, medio+1, fin);}
+                {return busquedaBinaria(v, x, medio+1, right);}
             }
         }
     }
