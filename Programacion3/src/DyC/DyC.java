@@ -7,6 +7,7 @@ import tda.impl.Vector;
 public class DyC {
 
     public static boolean esPalindromo(String palabra, int inicio, int fin) {
+
         if (inicio >= fin) {
             return true;
         } else {
@@ -51,4 +52,42 @@ public class DyC {
             }
         }
     }
+    public static int numeroRepetido(int[] vec, int ini, int fin)
+    {
+        //Caso base, vector de 1 elemento
+
+        if(ini == fin) {
+            return ini; }
+
+        int mitad = (ini + fin)/2;
+
+        if(vec[mitad]==mitad) {//Hago esta comparacion con el indice por que dice que estan acomodados de acuerdo al indice. Ya si lo que tengo en el arreglo no esta en el indice es por que esta repetido.
+            //el elemento repetido esta de la izq
+            return numeroRepetido(vec,mitad+1,fin);
+        }
+        //el elemento repetido esta de la derecha
+        else {
+            return numeroRepetido(vec, ini, mitad);
+        }
+
+
+    }
+
+
+    public static int find_x_position(int[] arr, int x) {
+        int low = 0;
+        int high = 1;
+
+        while(arr[high] < x || arr[high] != -1) {
+            low = high;
+            System.out.println(high);
+            high *= 2;
+
+        }
+        return low;
+    }
+
+
+
+
 }
