@@ -1,3 +1,5 @@
+package Greedy;
+
 import org.junit.jupiter.api.Test;
 import tda.VectorTDA;
 import tda.impl.Vector;
