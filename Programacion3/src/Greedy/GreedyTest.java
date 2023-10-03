@@ -33,4 +33,21 @@ class GreedyTest {
 
         assertEquals(29,Greedy.minTiempoEspera(procesos));
     }
+
+    @Test
+    void capturasPoliciacas() {
+        int[] arr = new int[] {1,-1,1,1,-1,-1,1,-1};
+        int k = 2;
+        assertEquals(3, Greedy.capturasPoliciacas(arr, k));
+    }
+
+    @Test
+    void guardarPesos() {
+        int[] contenedores = {5, 5, 5, 5};
+        Integer[] pesos = {4, 3, 2, 1};
+
+        int resultado = Greedy.guardarPesos(contenedores, pesos);
+
+        assertEquals(3, resultado);
+    }
 }

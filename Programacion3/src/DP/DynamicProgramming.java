@@ -1,8 +1,9 @@
 package DP;
 
+import tda.impl.Solicitud;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class DynamicProgramming {
 
@@ -50,5 +51,42 @@ public class DynamicProgramming {
         System.out.println(Arrays.toString(v));
         System.out.println(Arrays.toString(pos));
         return v[n-1];
+    }
+
+    public static int subsecuenciaStrings(String a, String b) {
+        int[][] m = new int[a.length()][b.length()];
+
+
+        for (int i = 0; i<a.length(); i++) {
+            for (int j = 0; j<b.length(); j++) {
+                if (i==0 || j==0){m[i][j]=0;}
+                else if (a.charAt(i) == b.charAt(j)) {
+                    m[i][j] = 1 + m[i-1][j-1];
+                } else {
+                    m[i][j] = Math.max(m[i-1][j], m[i][j-1]);
+                }
+            }
+        }
+
+        return m[a.length()-1][b.length()-1];
+    }
+
+    public static int planTrabajoPeriodista(ArrayList<Solicitud> s) {
+        int plazoMax = 4;
+        int [] dp = new int[plazoMax + 1];
+
+        for (int i = 1; i<dp.length; i++) {
+            System.out.println((s.get(i-1).plazo <= i)+ " " + s.get(i-1).plazo);
+            if (dp[i-1] + s.get(i-1).precio>dp[i] && s.get(i-1).plazo < plazoMax) {
+
+                dp[i] = dp[i-1] + s.get(i-1).precio;
+                System.out.println(dp[i] + " " + i);
+            }
+        }
+//        for (int i =0;i<dp.length;i++) {
+//            System.out.println(dp[i]);
+//        }
+
+        return dp[4];
     }
 }

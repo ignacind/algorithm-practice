@@ -7,6 +7,8 @@ import tda.impl.Conjunto;
 import tda.impl.Vector;
 import DyC.metodosOrdenamiento;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Greedy {
@@ -50,5 +52,63 @@ public class Greedy {
         }
         System.out.println(tEspera);
         return tEspera;
+    }
+
+    public static int capturasPoliciacas(int[] arr, int k) {
+        int cant = 0;
+        int p = 0;
+        int l = 0;
+        int n = arr.length;
+
+        while (p<n && l<n) {
+            p = proximoCandidato(arr, p, 1);
+            l = proximoCandidato(arr, l, -1);
+
+            if (p == n || l == n) {break;}
+
+            if (Math.abs(p - l) < k) {
+                cant++;
+                arr[p] = 0;
+                arr[l] = 0;
+
+            } else if (p < l) {
+                p++;
+            } else {
+                l++;
+            }
+        }
+
+        return cant;
+    }
+
+    public static int proximoCandidato(int[] arr,int i, int key) {
+        while (i < arr.length && arr[i]!=key) {
+            i++;
+        }
+        return i;
+    }
+
+
+    public static int guardarPesos(int[] contenedores, Integer[] o) {
+        int i = 0;
+        int j = 0;
+        int cant = 0;
+        int pesoOg = contenedores[0];
+        Arrays.sort(o, Collections.reverseOrder());
+
+        while (i < contenedores.length && j < o.length) {
+            if (contenedores[i] >= o[j]) {
+                contenedores[i] -= o[j];
+                j++;
+            } else {
+                cant++;
+                i++;
+            }
+        }
+        if (i < contenedores.length && contenedores[i] != pesoOg) {
+            cant++;
+        }
+
+        return cant;
     }
 }

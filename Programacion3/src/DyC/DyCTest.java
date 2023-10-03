@@ -53,12 +53,12 @@ class DyCTest {
         assertEquals(6, DyC.numeroRepetido(p, 0, p.length));
     }
 
+
     @Test
-    public void find_x_position() {
-        int[] arr = new int[] {1,4,6,7,8,10,-1,-1,-1,-1};
-        int x = 10;
-        System.out.println(DyC.find_x_position(arr, 10));
-//        assertEquals(5, DyC.find_x_position(arr, x));
+    public void huevoRoto() {
+        int[] pisos = new int[] {1, 3, 6, 10, 15, 21, 28, 36, 45};
+        int k = 25;
+        assertEquals(2, DyC.huevoRoto(pisos, k));
     }
 
 }

@@ -74,18 +74,30 @@ public class DyC {
     }
 
 
-    public static int find_x_position(int[] arr, int x) {
-        int low = 0;
-        int high = 1;
-
-        while(arr[high] < x || arr[high] != -1) {
-            low = high;
-            System.out.println(high);
-            high *= 2;
-
+    public static int huevoRoto(int[] pisos, int k) {
+        int left = 0;
+        int n = pisos.length;
+        int right = n - 1;
+        int amount = 0;
+        while (left <= right) {
+            int mid = (left+right) / 2;
+            amount ++;
+            if (pisos[mid] < k) {
+                if (mid+1 < n && pisos[mid+1] >= k){
+                    return amount;}
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+                if (mid-1 >= 0 && pisos[mid-1] <= k) {
+                    return amount;
+                }
+            }
         }
-        return low;
+        return amount;
     }
+
+
+
 
 
 
