@@ -33,13 +33,5 @@ class DynamicProgrammingTest {
         System.out.println(DynamicProgramming.subsecuenciaStrings(a, b));
     }
 
-    @Test
-    void planTrabajoPeriodista() {
-        ArrayList<Solicitud> s = new ArrayList<>();
-        s.add(0, new Solicitud(2,10));
-        s.add(1, new Solicitud(2,15));
-        s.add(2, new Solicitud(3,25));
-        s.add(3, new Solicitud(3,20));
-        assertEquals(60, DynamicProgramming.planTrabajoPeriodista(s));
-    }
+
 }

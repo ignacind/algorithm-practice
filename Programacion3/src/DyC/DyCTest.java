@@ -61,4 +61,11 @@ class DyCTest {
         assertEquals(2, DyC.huevoRoto(pisos, k));
     }
 
+    @Test
+    public void picosAltos() {
+        int[] a = new int[] {1, 6, 5, 4, 3, 2, 7};
+        int expected = 6;
+        assertEquals(expected, DyC.picosAltos(a, 0, a.length-1));
+    }
+
 }

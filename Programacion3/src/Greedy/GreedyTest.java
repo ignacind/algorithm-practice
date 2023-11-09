@@ -1,7 +1,9 @@
 package Greedy;
 
+import DP.DynamicProgramming;
 import org.junit.jupiter.api.Test;
 import tda.VectorTDA;
+import tda.impl.Solicitud;
 import tda.impl.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,5 +51,20 @@ class GreedyTest {
         int resultado = Greedy.guardarPesos(contenedores, pesos);
 
         assertEquals(3, resultado);
+    }
+    @Test
+    void planTrabajoPeriodista() {
+        Solicitud[] s = {
+                new Solicitud(2, 10),
+                new Solicitud(3, 20),
+                new Solicitud(4, 100),
+                new Solicitud(2, 15),
+                new Solicitud(3, 25),
+                new Solicitud(4, 10)
+        };
+
+
+        assertEquals(160, Greedy.planTrabajoPeriodista(s));
+
     }
 }

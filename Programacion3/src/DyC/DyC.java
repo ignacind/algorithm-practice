@@ -97,6 +97,20 @@ public class DyC {
     }
 
 
+    public static int picosAltos(int[] a, int left, int right) {
+        if (left == right) {
+            return a[left];
+        }
+        int mid = (left+right) / 2;
+
+        if (mid + 1 < a.length && a[mid+1] > a[mid]) {
+            return picosAltos(a, mid+1, right);
+        } else {
+            return picosAltos(a, left, mid);
+        }
+    }
+
+
 
 
 

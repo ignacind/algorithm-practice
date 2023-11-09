@@ -4,6 +4,7 @@ import DyC.DyC;
 import tda.ConjuntoTDA;
 import tda.VectorTDA;
 import tda.impl.Conjunto;
+import tda.impl.Solicitud;
 import tda.impl.Vector;
 import DyC.metodosOrdenamiento;
 
@@ -110,5 +111,44 @@ public class Greedy {
         }
 
         return cant;
+    }
+
+    public static int planTrabajoPeriodista(Solicitud[] s) {
+
+        Arrays.sort(s, new Comparator<Solicitud>() {
+            public int compare(Solicitud a, Solicitud b) {
+                if (a.plazo == b.plazo) {
+                    // Si el plazo es el mismo, ordenar por remuneración en orden decreciente
+                    return Integer.compare(b.precio, a.precio);
+                }
+                // Ordenar por plazo en orden decreciente
+                return Integer.compare(b.plazo, a.plazo);
+            }
+        });
+
+        int gananciaTotal = 0;
+        int t = s[0].plazo;
+        int i = 0;
+        int k;
+        int currMax;
+        while (t > 0) {
+            currMax = s[i].precio;
+            k = i;
+            for (int j = i+1; j<s.length; j++) {
+                if (t > s[j].plazo) {
+                    break;
+                }
+                if (s[j].precio > currMax) {
+                    currMax = s[j].precio;
+                    k = j;
+                }
+            }
+
+            s[k] = new Solicitud(Integer.MAX_VALUE, 0);
+            gananciaTotal += currMax;
+            t--;
+            i++;
+        }
+        return gananciaTotal;
     }
 }
