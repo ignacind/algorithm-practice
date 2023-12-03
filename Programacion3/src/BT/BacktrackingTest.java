@@ -3,9 +3,7 @@ package BT;
 import org.junit.jupiter.api.Test;
 import tda.impl.Musico;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -102,5 +100,17 @@ class BacktrackingTest {
         List<Integer> perm = new ArrayList<>();
         Backtracking.permutations_parcial2(a, perm, permutations);
         System.out.println(permutations);
+    }
+
+    @Test
+    void conjunto_potencias() {
+        Set<Set<Integer>> sets = new HashSet<>();
+        Set<Integer> temp = new HashSet<>();
+        List<Integer> a = new ArrayList<>();
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        Backtracking.conjunto_potencia(0, a, temp, sets);
+        System.out.println(sets);
     }
 }

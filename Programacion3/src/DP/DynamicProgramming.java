@@ -73,4 +73,32 @@ public class DynamicProgramming {
     }
 
 
+    public static int caminos_laberinto(int[][] lab, int m, int n) {
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (lab[i][j] == -1) {
+                    continue;
+                } else if (i == 0 || j == 0) {
+                    lab[i][j] = 1;
+                } else {
+                    if (lab[i - 1][j] != -1) {
+                        lab[i][j] += lab[i - 1][j] ;
+                    } if (lab[i][j - 1] != -1) {
+                        lab[i][j] += lab[i][j - 1];
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < lab.length; i++) {
+            for (int j = 0; j < lab[0].length; j++) {
+                System.out.print(lab[i][j] + " ");
+            }
+            System.out.println();
+        }
+        return lab[m-1][n-1];
+
+    }
+
+
 }

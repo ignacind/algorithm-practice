@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import tda.VectorTDA;
 import tda.impl.Vector;
 
+import javax.sound.midi.Soundbank;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DyCTest {
@@ -68,4 +70,17 @@ class DyCTest {
         assertEquals(expected, DyC.picosAltos(a, 0, a.length-1));
     }
 
+
+    @Test
+    public void eggs_trails() {
+        int[] floors = new int[] {1, 3, 5, 6, 7, 9, 12};
+        int k = 8;
+        System.out.println(DyC.eggs_trials(floors, k, 0, floors.length-1, 0));
+    }
+
+    @Test
+    public void combinationsStudents() {
+        int n = 4;
+        System.out.println(DyC.combinationsStudents(n));
+    }
 }

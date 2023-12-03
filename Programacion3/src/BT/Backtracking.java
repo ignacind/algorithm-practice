@@ -1,8 +1,7 @@
 package BT;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
 import tda.impl.Musico;
 import tda.impl.Par;
 
@@ -12,20 +11,20 @@ public class Backtracking {
         s.set(e, 0);
         while (s.get(e) < s.size() && !ok) {
             if (damaOK(s, e)) {
-                if (e == s.size()-1) {
+                if (e == s.size() - 1) {
                     ok = true;
                 } else {
                     ok = n_Damas(s, e + 1);
                 }
             }
-            s.set(e, s.get(e)+1);
+            s.set(e, s.get(e) + 1);
         }
         return ok;
     }
 
     public static boolean damaOK(List<Integer> s, int e) {
-        for (int i = 1; i <= e-1; i++) {
-            if (s.get(i)==s.get(e) || Math.abs(s.get(i) - s.get(e)) == Math.abs((i-e))) {
+        for (int i = 1; i <= e - 1; i++) {
+            if (s.get(i) == s.get(e) || Math.abs(s.get(i) - s.get(e)) == Math.abs((i - e))) {
                 return false;
             }
         }
@@ -37,21 +36,23 @@ public class Backtracking {
         if (stage == v.length) {
             if (actSum == m) {
 
-                for (int j=0; j<solution.length; j++) {
+                for (int j = 0; j < solution.length; j++) {
                     if (solution[j] != 0) {
                         System.out.println(v[j]);
                     }
                 }
-            }} else {
-        for (int i=0; i<=1; i++) {
-            solution[stage] = i;
-            actSum += v[stage] * i;
-
-            if (actSum <= m) {
-                subset_Sums(v, m, solution, actSum, stage+1);
             }
+        } else {
+            for (int i = 0; i <= 1; i++) {
+                solution[stage] = i;
+                actSum += v[stage] * i;
 
-        }}
+                if (actSum <= m) {
+                    subset_Sums(v, m, solution, actSum, stage + 1);
+                }
+
+            }
+        }
     }
 
     public static boolean equalSum_subSets(int[] v, int arrSum2, int etapa) {
@@ -81,20 +82,20 @@ public class Backtracking {
         }
     }
 
-    public static void roomPath_max (int[][] m, int n, List<Integer> path, List<Integer> longestPath) {
+    public static void roomPath_max(int[][] m, int n, List<Integer> path, List<Integer> longestPath) {
 
-        if (path.get(path.size()-1) == n-1) {
+        if (path.get(path.size() - 1) == n - 1) {
             if (path.size() > longestPath.size()) {
                 longestPath.clear();
                 longestPath.addAll(new ArrayList<>(path));
             }
         } else {
             for (int i = 0; i < m.length; i++) {
-                int lstNode = path.get(path.size()-1);
+                int lstNode = path.get(path.size() - 1);
                 if (!path.contains(i) && i > lstNode && m[lstNode][i] == 1) {
                     path.add(i);
                     roomPath_max(m, n, path, longestPath);
-                    path.remove(path.size()-1);
+                    path.remove(path.size() - 1);
                 }
             }
         }
@@ -108,7 +109,7 @@ public class Backtracking {
                 if (!perm.contains(musicos.get(i).id) && musicoOK(musicos, perm, i)) {
                     perm.add(musicos.get(i).id);
                     permutations_Orquesta(musicos, perm, permutations);
-                    perm.remove(perm.size()-1);
+                    perm.remove(perm.size() - 1);
                 }
             }
         }
@@ -154,7 +155,7 @@ public class Backtracking {
             permutations.add(new ArrayList<>(perm));
         } else {
 //            for (int i = 0; i < a.length; i++)
-            for (int i = a.length-1; i>-1; i--) // CASO C, estrictamente decreciente
+            for (int i = a.length - 1; i > -1; i--) // CASO C, estrictamente decreciente
             {
                 if (!perm.contains(a[i])) {  // CASO B, el caso A es con repeticiones.
                     perm.add(a[i]);
@@ -164,6 +165,21 @@ public class Backtracking {
             }
         }
     }
+
+
+    public static void conjunto_potencia(int index, List<Integer> list, Set<Integer> subset, Set<Set<Integer>> conjuntoPotencia) {
+        conjuntoPotencia.add(new HashSet<>(subset));
+
+        for (int i = index; i < list.size(); i++) {
+            subset.add(list.get(i));
+            conjunto_potencia(i + 1, list, subset, conjuntoPotencia);
+            subset.remove(list.get(i));
+        }
+    }
+
+
+
+
 
 
 }

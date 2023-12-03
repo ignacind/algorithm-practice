@@ -112,8 +112,29 @@ public class DyC {
 
 
 
+    public static int eggs_trials(int[] floors, int k, int left, int right, int amount) {
+        if (left >= right) {
+            return amount;
+        }
+        int mid = (left+right) / 2;
+        if (mid+1<floors.length && floors[mid] < k && floors[mid+1] > k) {
+            return amount+2;
+        }
+        if (floors[mid] < k) {
+            return eggs_trials(floors, k, mid, right, amount+1);
+        } else {
+            return eggs_trials(floors, k, left, mid-1, amount+1);
+        }
+    }
 
+    public static int combinationsStudents(int n) {
+        if (n <= 1) {
+            return 1;
+        } else {
+            return combinationsStudents(n-1) + (n-1) * combinationsStudents(n - 2);
+        }
 
+    }
 
 
 }

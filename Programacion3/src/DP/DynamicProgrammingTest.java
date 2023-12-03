@@ -1,5 +1,6 @@
 package DP;
 
+import DyC.DyC;
 import org.junit.jupiter.api.Test;
 import tda.impl.Solicitud;
 
@@ -33,5 +34,20 @@ class DynamicProgrammingTest {
         System.out.println(DynamicProgramming.subsecuenciaStrings(a, b));
     }
 
+    @Test
+    void caminos_laberinto() {
+        int[][] lab = new int[][]
+                {
+                        {0, 0, 0, 0, 0},
+                        {0, 0, -1, 0, -1},
+                        {0, 0, 0, 0, 0},
+                        {0, -1, 0, -1, 0},
+                        {0, 0, 0, 0, 0}
+                };
+        int m = lab.length;
+        int n = lab[0].length;
+
+        System.out.println(DynamicProgramming.caminos_laberinto(lab, m, n));
+    }
 
 }
