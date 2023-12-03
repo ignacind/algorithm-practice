@@ -50,4 +50,13 @@ class DynamicProgrammingTest {
         System.out.println(DynamicProgramming.caminos_laberinto(lab, m, n));
     }
 
+    @Test
+    void repeteadElements_knapsack() {
+        int[] values = new int[] {2,4,6,2};
+        int[] weights = new int[] {3,3,4,2};
+        int w = 8;
+
+        System.out.println(DynamicProgramming.repeteadElements_knapsack(w, values, weights));
+    }
+
 }

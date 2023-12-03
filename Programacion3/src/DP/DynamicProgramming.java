@@ -100,5 +100,18 @@ public class DynamicProgramming {
 
     }
 
+    public static int repeteadElements_knapsack(int w, int [] values, int[] weights) {
+        int[] dp =  new int[w+1];
+
+        for (int i = 1; i < w+1; i++) {
+            for (int j = 0; j < weights.length; j++) {
+                if (weights[j] <= i) {
+                    dp[i] = Math.max(dp[i], dp[Math.abs(i - weights[j])] + values[j]);
+                }
+            }
+        }
+        return dp[w];
+    }
+
 
 }
