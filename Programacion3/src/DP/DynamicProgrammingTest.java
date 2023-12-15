@@ -59,4 +59,16 @@ class DynamicProgrammingTest {
         System.out.println(DynamicProgramming.repeteadElements_knapsack(w, values, weights));
     }
 
+    @Test
+    void redoMinimumPath() {
+        int[][] paths = new int[][] {
+                {0, 11, 6, 0, 0, 0},
+                {0, 0, 7, 10, 5, 0},
+                {0, 0, 0, 6, 5, 0},
+                {0, 0, 0, 0, 8, 15},
+                {0, 0, 0, 0, 0, 2},
+                {0, 0, 0, 0, 0, 0}
+            };
+        System.out.println(DynamicProgramming.redoMinimumPath(paths));
+    }
 }

@@ -113,4 +113,25 @@ class BacktrackingTest {
         Backtracking.conjunto_potencia(0, a, temp, sets);
         System.out.println(sets);
     }
+
+    @Test
+    void redoCuartetoCuerdas() {
+        List<Musico> musicos = new ArrayList<>();
+        musicos.add(new Musico("78", "vln"));
+        musicos.add(new Musico("86", "vla"));
+        musicos.add(new Musico("07", "vla"));
+        musicos.add(new Musico("19", "vcl"));
+        musicos.add(new Musico("91", "vln"));
+        musicos.add(new Musico("98", "vcl"));
+
+        List<String> perm = new ArrayList<>();
+        List<List<String>> permutations = new ArrayList<>();
+
+        Backtracking.redoCuartetoCuerdas(musicos, permutations, perm);
+
+        // EXPECTED = [[78, 91, 86, 19], [78, 91, 86, 98], [78, 91, 07, 19], [78, 91, 07, 98], [91, 78, 86, 19], [91, 78, 86, 98], [91, 78, 07, 19], [91, 78, 07, 98]]
+
+        System.out.println(permutations);
+
+    }
 }

@@ -114,4 +114,28 @@ public class DynamicProgramming {
     }
 
 
+    public static int redoMinimumPath(int[][] paths) {
+        int minCost = Integer.MAX_VALUE;
+        int[] p = new int[paths.length];
+        int k = 1;
+        for (int i = 0; i < paths.length; i++) {
+            if (i+1 >= paths.length) {
+                break;
+            }
+            for (int j = i+1; j < paths[0].length; j++) {
+                if (paths[i][j] != 0) {
+                    if (p[j] != 0) {
+                        p[j] = Math.min(p[j], paths[i][j] + p[i]);
+                    } else {
+                        p[j] = p[i] + paths[i][j];
+                    }
+                }
+            }
+        }
+
+
+        return p[paths.length-1];
+    }
+
+
 }

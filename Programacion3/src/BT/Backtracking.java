@@ -177,6 +177,30 @@ public class Backtracking {
         }
     }
 
+    public static void redoCuartetoCuerdas(List<Musico> m, List<List<String>> cuartetos, List<String> temp) {
+        if (temp.size() == 4) {
+            cuartetos.add(new ArrayList<>(temp));
+        } else {
+            for (int i = 0; i < m.size(); i++) {
+                if (musicianOK(temp, m, i)) {
+                    temp.add(m.get(i).id);
+                    redoCuartetoCuerdas(m, cuartetos, temp);
+                    temp.remove(temp.size()-1);
+                }
+            }
+        }
+    }
+
+
+    public static boolean musicianOK(List<String> temp, List<Musico> m, int i) {
+        String instrumento = m.get(i).inst;
+        int n = temp.size();
+        return  (!temp.contains(m.get(i).id))
+                && ((n < 2 && instrumento == "vln")
+                || (n == 2 && instrumento == "vla")
+                || (n == 3 && instrumento == "vcl"));
+    }
+
 
 
 
