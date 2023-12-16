@@ -7,6 +7,9 @@ import tda.impl.Vector;
 
 import javax.sound.midi.Soundbank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DyCTest {
@@ -68,6 +71,7 @@ class DyCTest {
         int[] a = new int[] {1, 6, 5, 4, 3, 2, 7};
         int expected = 6;
         assertEquals(expected, DyC.picosAltos(a, 0, a.length-1));
+
     }
 
 
@@ -82,5 +86,33 @@ class DyCTest {
     public void combinationsStudents() {
         int n = 4;
         System.out.println(DyC.combinationsStudents(n));
+    }
+
+    @Test
+    public void order_negs_positives() {
+        List<Integer> v = new ArrayList<>();
+        v.add(9);
+        v.add(-3);
+        v.add(5);
+        v.add(-2);
+        v.add(-8);
+        v.add(-6);
+        v.add(1);
+        v.add(3);
+
+        DyC.order_negs_positives(0, v.size()-1, v);
+        System.out.println(v);
+    }
+
+
+    @Test
+    public void merge_negsPositvs() {
+        int[] order = new int[]{9, -3, 5, -2, -8, -6, 1, 3};
+        metodosOrdenamiento.mergeSort(order, 0, order.length-1);
+
+        for (int i = 0; i < order.length; i++) {
+            System.out.print(order[i] + " ");
+
+        }
     }
 }

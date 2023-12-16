@@ -4,6 +4,9 @@ import tda.MatrizTDA;
 import tda.VectorTDA;
 import tda.impl.Vector;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class DyC {
 
     public static boolean esPalindromo(String palabra, int inicio, int fin) {
@@ -133,6 +136,70 @@ public class DyC {
         } else {
             return combinationsStudents(n-1) + (n-1) * combinationsStudents(n - 2);
         }
+
+    }
+
+    public static void order_negs_positives(int left, int right, List<Integer> v) {
+        if (left >= right) {
+            return;
+        } else {
+            if (v.get(left) < 0) {
+                order_negs_positives(left+1, right, v);
+            }
+            else if (v.get(right) >= 0) {
+                order_negs_positives(left, right-1, v);
+            } else {
+                int temp = v.get(right);
+                v.set(right, v.get(left));
+                v.set(left, temp);
+                order_negs_positives(left+1, right-1, v);
+            }
+        }
+
+        //[9, −3, 5, −2, −8, −6, 1, 3]
+        // output =  [-6, -3, -8, -2, 5, 9, 1, 3]
+        // expected =  [−3, −2, −8, −6, 9, 5, 1, 3].
+    }
+
+    public static void merge_negsPositvs(int[] u, int left, int right) {
+        int[] w = Arrays.copyOf(u, u.length);
+        int mid = (left + right) / 2;
+        int k = left;
+
+        // copy negs from left sub
+        for (int i = left; i <= mid; i++) {
+            if (u[i] < 0) {
+                w[k] = u[i];
+                k++;
+            }
+        }
+
+        // copy negative from right sub
+        for (int j = mid+1; j <= right; j++) {
+            if (u[j] < 0) {
+                w[k] = u[j];
+                k++;
+            }
+        }
+
+        for (int i = left; i <= mid; i++) {
+            if (u[i] > 0) {
+                w[k] = u[i];
+                k++;
+            }
+        }
+
+        for (int j = mid+1; j <= right; j++) {
+            if (u[j] > 0) {
+                w[k] = u[j];
+                k++;
+            }
+        }
+
+        for (int i = left; i <= right; i++) {
+            u[i] = w[i];
+        }
+
 
     }
 

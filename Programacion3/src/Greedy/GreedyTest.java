@@ -64,7 +64,7 @@ class GreedyTest {
         };
 
 
-        assertEquals(160, Greedy.planTrabajoPeriodista(s));
+        assertEquals(160, Greedy.planTrabajoPeriodista(s, 4));
 
     }
 }

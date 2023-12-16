@@ -5,6 +5,7 @@ import tda.impl.Solicitud;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class DynamicProgramming {
 
@@ -111,6 +112,37 @@ public class DynamicProgramming {
             }
         }
         return dp[w];
+    }
+
+    public static int[] catalan_numbers(int n) {
+        int[] arr = new int[n+1];
+        arr[0] = 1;
+
+        for (int i = 1; i < arr.length; i++) {
+            arr[i] = arr[i - 1] * (2 * (2 * i - 1)) / (i + 1);
+        }
+
+        return arr;
+
+    }
+
+    public static boolean subconjunto_booleanMatrix(int[] a, int k) {
+        boolean[][] t = new boolean[a.length][k+1];
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < k+1; j++) {
+                if (i == 0) {
+                    t[i][j] =  j==0 || a[i] == j;
+                } else {
+                    if (j==0) {
+                        t[i][j] = true;
+                    } else {
+                        t[i][j] = (a[i]==j) || (t[i-1][j]) || (a[i]<j && t[i-1][j-a[i]]);
+                    }
+                }
+            }
+        }
+        return t[a.length-1][k];
     }
 
 
