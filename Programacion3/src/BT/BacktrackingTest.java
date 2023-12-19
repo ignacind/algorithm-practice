@@ -114,7 +114,6 @@ class BacktrackingTest {
         System.out.println(sets);
     }
 
-<<<<<<< Updated upstream
     @Test
     void redoCuartetoCuerdas() {
         List<Musico> musicos = new ArrayList<>();
@@ -135,20 +134,26 @@ class BacktrackingTest {
         System.out.println(permutations);
 
     }
-=======
-//    @Test
-//    void bfs_isPath() {
-//        int[][] m = new int[][] {
-//                {0, 0, 0, 1, 0, 0, 0, 0},
-//                {1, 0, 1, 0, 1, 0, 0, 0},
-//                {0, 0, 0, 0, 0, 0, 0, 1},
-//                {0, 0, 0, 0, 1, 1, 0, 0},
-//                {0, 0, 0, 1, 0, 0, 1, 0},
-//                {0, 0, 0, 0, 0, 0, 1, 1},
-//                {0, 0, 0, 0, 0, 0, 0, 0},
-//        };
-//        int v1 = 0;
-//        int v2 = 7;
-//    }
->>>>>>> Stashed changes
+
+    @Test
+    void existsPath() {
+        int[][] g = new int[][] {
+                {0, 0, 0, 1, 0, 0, 0, 0},
+                {1, 0, 1, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1},
+                {0, 0, 0, 0, 1, 1, 0, 0},
+                {0, 0, 0, 1, 0, 0, 1, 0},
+                {0, 0, 0, 0, 0, 0, 1, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1},
+                {0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        int v1 = 1;
+        int v2 = 7;
+        List<Integer> path = new ArrayList<>();
+        List<List<Integer>> allPaths = new ArrayList<>();
+        path.add(v1);
+        Backtracking.existsPath(g, v1, v2, path, allPaths);
+        System.out.println(allPaths);
+    }
+
 }

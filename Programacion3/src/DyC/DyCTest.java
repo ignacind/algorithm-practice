@@ -100,8 +100,14 @@ class DyCTest {
         v.add(1);
         v.add(3);
 
-        DyC.order_negs_positives(0, v.size()-1, v);
-        System.out.println(v);
+        int[] m = new int[]{9, -3, 5, -2, -8, -6, 1, 3};
+        DyC.mergeSort(m, 0,v.size()-1);
+        for (int n : m) {
+            System.out.print(n + " ");
+        }
+        // input    =  [9, −3, 5, −2, −8, −6, 1, 3]
+        // output   =  [-6, -3, -8, -2, 5, 9, 1, 3]
+        // expected =  [−3, −2, −8, −6, 9, 5, 1, 3].
     }
 
 
@@ -114,5 +120,11 @@ class DyCTest {
             System.out.print(order[i] + " ");
 
         }
+    }
+
+    @Test
+    void valleFinal() {
+        int[] arr = new int[] {0, 4, 3, 5, 6};
+        System.out.println(DyC.valleFinal(arr, 0, arr.length-1));
     }
 }

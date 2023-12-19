@@ -139,26 +139,15 @@ public class DyC {
 
     }
 
-    public static void order_negs_positives(int left, int right, List<Integer> v) {
-        if (left >= right) {
-            return;
-        } else {
-            if (v.get(left) < 0) {
-                order_negs_positives(left+1, right, v);
-            }
-            else if (v.get(right) >= 0) {
-                order_negs_positives(left, right-1, v);
-            } else {
-                int temp = v.get(right);
-                v.set(right, v.get(left));
-                v.set(left, temp);
-                order_negs_positives(left+1, right-1, v);
-            }
-        }
 
-        //[9, −3, 5, −2, −8, −6, 1, 3]
-        // output =  [-6, -3, -8, -2, 5, 9, 1, 3]
-        // expected =  [−3, −2, −8, −6, 9, 5, 1, 3].
+
+    public static void mergeSort(int[] s, int inicio, int fin) {
+        if (inicio < fin) {
+            int medio = (fin + inicio) / 2;
+            mergeSort(s, inicio, medio);
+            mergeSort(s, medio + 1, fin);
+            merge_negsPositvs(s, inicio, fin);
+        }
     }
 
     public static void merge_negsPositvs(int[] u, int left, int right) {
@@ -202,6 +191,24 @@ public class DyC {
 
 
     }
+
+    public static int valleFinal(int[] arr, int left, int right) {
+        if (left >= right) {
+            return arr[left];
+        }
+        int mid = (left+right) / 2;
+
+        if (mid - 1 >= 0 && arr[mid] < arr[mid-1]
+         && mid + 1 < arr.length && arr[mid] < arr[mid+1]) {
+                return arr[mid];
+        } else if (mid + 1 < arr.length && arr[mid] < arr[mid+1]) {
+            return valleFinal(arr, left, mid);
+        } else {
+            return valleFinal(arr, mid+1, right);
+        }
+    }
+
+
 
 
 }

@@ -6,7 +6,7 @@ import tda.impl.Vector;
 import java.util.Comparator;
 
 public class metodosOrdenamiento {
-    public static <T> void mergeSort(int[] s, int inicio, int fin) {
+    public static void mergeSort(int[] s, int inicio, int fin) {
         if (inicio < fin) {
             int medio = (fin + inicio) / 2;
             mergeSort(s, inicio, medio);

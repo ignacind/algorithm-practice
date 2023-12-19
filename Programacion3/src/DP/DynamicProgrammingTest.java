@@ -60,7 +60,6 @@ class DynamicProgrammingTest {
     }
 
     @Test
-<<<<<<< Updated upstream
     void redoMinimumPath() {
         int[][] paths = new int[][] {
                 {0, 11, 6, 0, 0, 0},
@@ -72,23 +71,31 @@ class DynamicProgrammingTest {
             };
         System.out.println(DynamicProgramming.redoMinimumPath(paths));
     }
-=======
-    void catalan_numbers() {
-        int n = 5;
-
-        int[] arr = DynamicProgramming.catalan_numbers(n);
-
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i] + " ");
-        }
-    }
 
     @Test
-    void subconjunto_booleanMatrix() {
-        int k = 9;
-        int[] a = new int[]{2,4,6, 8, 1};
-        System.out.println(DynamicProgramming.subconjunto_booleanMatrix(a, k));
+    void goldRush() {
+        int[][] g = new int[][] {
+                {3, 1, 1, 1, 1},
+                {2, 2, 0, 1, 3},
+                {1, 1, 1, 2, 2},
+                {2, 5, 5, 1, 1}
+        };
+        int[] path = DynamicProgramming.goldRush(g, g.length, g[0].length);
+        for(int n : path) {
+            System.out.print(n + " ");
+        }
+    }
+    @Test
+    void bellmanFord() {
+        int[][] m = new int[][] {
+                {0, 6, 5, 5, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, -1, 0, 0},
+                {0, -2, 0, 0, 0, 1, 0, 0},
+                {0, 0, -2, 0, 0, 0, -1, 0},
+                {0, 0, 0, 0, 0, 0, 0, 3},
+                {0, 0, 0, 0, 0, 0, 0, 3},
+                {0, 0, 0, 0, 0, 0, 0, 0}
+        };
     }
 
->>>>>>> Stashed changes
 }

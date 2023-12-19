@@ -202,7 +202,47 @@ public class Backtracking {
     }
 
 
+    public static void existsPath(int[][] g, int v1, int v2, List<Integer> visited, List<List<Integer>> allPaths) {
+        if (visited.get(visited.size()-1) == v2) {
+            allPaths.add(new ArrayList<>(visited));
 
+        } else {
+            for (int i = 0; i < g.length; i++) {
+                int lstNode = visited.get(visited.size()-1);
+                if (!visited.contains(i) && g[lstNode][i] == 1) {
+                    visited.add(i);
+                    existsPath(g, v1, v2, visited, allPaths);
+                    visited.remove(visited.size()-1);
+                }
+            }
+        }
+
+
+    }
+
+    public static void primesTries(int n, int[] primes, List<Integer> temp) {
+        int product = calcularProducto(temp);
+        if (product == n) {
+            System.out.println(temp);;
+        } else {
+            for (int i = 0; i < primes.length; i++) {
+                if (product * primes[i] <= n) {
+                    temp.add(primes[i]);
+                    primesTries(n, primes, temp);
+                    temp.remove(temp.size()-1);
+                }
+            }
+        }
+    }
+    public static int calcularProducto(List<Integer> numeros) {
+        int producto = 1;
+
+        for (int i = 0; i < numeros.size(); i++) {
+            producto *= numeros.get(i);
+        }
+
+        return producto;
+    }
 
 
 
