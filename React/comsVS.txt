@@ -1,2 +1,0 @@
-Acomodar hmtl: alt + shift + f
-Acomodar <p> o cualquier texto a la ventana: alt + z
